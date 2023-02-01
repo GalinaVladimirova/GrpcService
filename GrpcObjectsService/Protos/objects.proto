@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcObjectsService";
+
+package objects;
+
+service ObjectsGetter {
+  rpc GetJsonTypes (GetTypesRequest) returns (GetTypesReply);
+  rpc GetJsonObjectsByType (GetObjectsRequest) returns (stream GetObjectsReply);
+}
+
+
+message GetTypesRequest {
+
+}
+
+message GetTypesReply {
+  repeated string Types	 = 1;
+}
+
+message GetObjectsRequest {
+  string Type = 1;
+}
+
+message GetObjectsReply {
+  repeated string Data = 1;
+  Result Result = 2;
+}
+
+message Result {
+	bool Success = 1;
+	string ErrorMessage = 2;
+}
+
+
+
+
+

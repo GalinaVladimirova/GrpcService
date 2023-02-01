@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcClient";
+
+
+package handle;
+
+
+service Handler {
+  rpc HandleData (Request) returns (Reply);
+}
+
+message Request {
+  repeated string Data = 1;
+}
+
+message Reply {
+  Result Result = 1;
+}
+
+enum Result {
+  OK = 0;
+  ERROR = 1;
+}
